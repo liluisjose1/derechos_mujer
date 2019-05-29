@@ -9,7 +9,7 @@ export default class NewUser extends Component {
         this.state = { nombre: '', usuario: '', contra: '' }
     }
     saveData = () => {
-        fetch('http://192.168.1.22/DM/UsersApp/save', {
+        fetch('https://roselike-fillers.000webhostapp.com/UsersApp/save', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

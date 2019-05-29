@@ -14,7 +14,7 @@ class Welcome extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Users_model');
+        $this->load->model('Users_Model');
         $this->load->model('Notify_Model');
         $this->load->library('session');
 
@@ -23,7 +23,7 @@ class Welcome extends CI_Controller
     {
         if ($_SESSION['logged_in'] == true) {
             $parameters_header = array(
-                'users' => $this->Users_model->countUsers(),
+                'users' => $this->Users_Model->countUsers(),
                 'notify' => $this->Notify_Model->countNotify(),
             );
             $this->load->view('template/header', $parameters_header);

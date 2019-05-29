@@ -22,6 +22,7 @@ class Notify_Model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from($this->table);
+        $this->db->order_by(1, 'DESC');
         $query = $this->db->get();
         return $query->result();
     }
@@ -44,7 +45,7 @@ class Notify_Model extends CI_Model
     public function editState($data,$id){
         $this->db->where('id', $id);
         $this->db->update($this->table, $data);
-        return print_r($data);
+        //return print_r($data);
     }
     public function save($parameters)
     {

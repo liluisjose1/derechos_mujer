@@ -100,6 +100,8 @@ class UsersApp extends CI_Controller
         $parameters = array(
             'id_usuario' => $obj['id_usuario'],
             'direccion' => $obj['direccion'],
+            'longitud' => $obj['longitud'],
+            'latitud' => $obj['latitud'],
             'descripcion' => $obj['descripcion'],
             'estado' => 0,
             'fecha_notificacion' => date('Y-m-d'),

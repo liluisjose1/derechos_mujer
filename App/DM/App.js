@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import {View, Text, NetInfo } from 'react-native';
+import {View, Text, NetInfo, Button } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import Home from "./screens/Home";
 import NewUser from "./screens/NewUser";
 import DMHome from "./screens/DMHome";
 import NewComplaint from "./screens/NewComplaint";
 import Complaints from "./screens/Complaints";
+import Chat from "./screens/Chat";
 
 const AppNavigator = createStackNavigator({
 
@@ -38,6 +39,7 @@ const AppNavigator = createStackNavigator({
   },
   DMHomeScreen: {
     screen: DMHome,
+
     navigationOptions: () => ({
       title: `Denuncias`,
       headerStyle: {
@@ -62,10 +64,23 @@ const AppNavigator = createStackNavigator({
       },
     }),
   },
-  ComplaintScreen: {
-    screen: Complaints,
+  // ComplaintScreen: {
+  //   screen: Complaints,
+  //   navigationOptions: () => ({
+  //     title: `Mis Denuncias`,
+  //     headerStyle: {
+  //       backgroundColor: '#622776',
+  //     },
+  //     headerTintColor: '#fff',
+  //     headerTitleStyle: {
+  //       fontWeight: 'bold',
+  //     },
+  //   }),
+  // },
+  Chat: {
+    screen: Chat,
     navigationOptions: () => ({
-      title: `Mis Denuncias`,
+      title: `Mi Chat Bot`,
       headerStyle: {
         backgroundColor: '#622776',
       },

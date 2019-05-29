@@ -1,20 +1,44 @@
 //NewComplaint
 
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, KeyboardAvoidingView, Alert } from 'react-native'
-import { LinearGradient } from 'expo';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, KeyboardAvoidingView, Alert,Platform } from 'react-native'
+import { LinearGradient, Constants, Location, Permissions } from 'expo';
 
 export default class NewComplaint extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { usuario: '', direccion: '', descripcion: '' }
+        this.state = {
+            usuario: '', direccion: '', descripcion: '', location: null,
+            errorMessage: null,
+        }
     }
     componentDidMount() {
-        this.setState({ usuario: this.props.navigation.state.params.usuario })
+        //this.setState({ usuario: 'liluisjose1' });
+        this.setState({ usuario: this.props.navigation.state.params.usuario });
+        if (Platform.OS === 'android' && !Constants.isDevice) {
+            this.setState({
+                errorMessage: 'Oops, this will not work on Sketch in an Android emulator. Try it on your device!',
+            });
+        } else {
+            this._getLocationAsync();
+        }
     }
+    _getLocationAsync = async () => {
+        let { status } = await Permissions.askAsync(Permissions.LOCATION);
+        if (status !== 'granted') {
+            this.setState({
+                errorMessage: 'Permission to access location was denied',
+            });
+        }
+
+        let location = await Location.getCurrentPositionAsync({});
+        this.setState({ location });
+
+        console.log(location);
+    };
     saveData = () => {
-        fetch('http://192.168.1.22/DM/UsersApp/denuncia', {
+        fetch('https://roselike-fillers.000webhostapp.com/UsersApp/denuncia', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -24,6 +48,8 @@ export default class NewComplaint extends Component {
                 id_usuario: this.state.usuario,
                 direccion: this.state.direccion,
                 descripcion: this.state.descripcion,
+                longitud: this.state.location.coords.longitude,
+                latitud: this.state.location.coords.latitude,
 
             })
 
@@ -50,6 +76,13 @@ export default class NewComplaint extends Component {
             });
     }
     render() {
+        let text = 'Waiting..';
+        if (this.state.errorMessage) {
+            text = this.state.errorMessage;
+        } else if (this.state.location) {
+            text = JSON.stringify(this.state.location);
+        }
+
         return (
             <KeyboardAvoidingView behavior='padding' style={styles.container} >
                 <LinearGradient

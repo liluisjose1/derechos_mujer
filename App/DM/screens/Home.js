@@ -10,7 +10,7 @@ export default class Home extends Component {
   }
 
   componentWillMount() {
-    fetch('http://192.168.1.22/DM/UsersApp/')
+    fetch('https://roselike-fillers.000webhostapp.com/UsersApp/')
       .then((response) => response.json())
       .then((responseJson) => {
         console.log(responseJson);
@@ -26,7 +26,7 @@ export default class Home extends Component {
       });
   }
   validateUser = () => {
-    fetch('http://192.168.1.22/DM/UsersApp/getUser', {
+    fetch('https://roselike-fillers.000webhostapp.com/UsersApp/getUser', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

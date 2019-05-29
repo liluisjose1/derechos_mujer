@@ -12,7 +12,7 @@ export default class Complaints extends Component {
   }
 
   componentWillMount() {
-    fetch('http://192.168.1.22/DM/UsersApp/', {
+    fetch('https://roselike-fillers.000webhostapp.com/UsersApp/', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

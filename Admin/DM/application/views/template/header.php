@@ -189,7 +189,7 @@
     </nav>
 
     <!-- Header -->
-    <div class="header pb-8 pt-5 pt-lg-8 d-flex " style="min-height: 600px; background-image: url(<?= base_url()?>public/assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex " style="background-image: url(<?= base_url()?>public/assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;padding-top: 5rem !important;">
           <!-- Header -->
     <!-- Mask -->
     <span class="mask bg-gradient-default opacity-8"></span>  

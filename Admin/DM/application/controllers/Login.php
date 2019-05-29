@@ -15,7 +15,7 @@ class Login extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
-        $this->load->model('Users_model');
+        $this->load->model('Users_Model');
 
     }
     public function index()
@@ -32,7 +32,7 @@ class Login extends CI_Controller
             'clave' => $pass,
             'estado' => '1',
         );
-        $user = $this->Users_model->login($parameters);
+        $user = $this->Users_Model->login($parameters);
         if (!empty($user)) {
             $newdata = array(
                 'user' => $user->usuario_id,

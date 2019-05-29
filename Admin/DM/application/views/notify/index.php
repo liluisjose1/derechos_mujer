@@ -1,4 +1,4 @@
-<!-- Page content -->
+﻿<!-- Page content -->
 <div class="container-fluid mt--7">
     <!-- Table -->
     <div class="row">
@@ -22,8 +22,9 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Usuario</th>
                                 <th scope="col">Dirección</th>
+				<th scope="col">Mapa</th>
                                 <th scope="col">Descripcion</th>
-                                <th scope="col">Estado</th>
+				<th scope="col">Estado</th>
                                 <th scope="col">Fecha Ingreso</th>
                                 <th class="text-center" scope="col">Acciones</th>
                             </tr>
@@ -39,6 +40,9 @@
                                 </td>
                                 <td>
                                     <?php echo $noty->direccion ;?>
+                                </td>
+                                <td>
+                                    <a rel="tooltip" class="btn btn-primary" href='https://maps.google.com/?q=<?php echo $noty->latitud;?>,<?php echo $noty->longitud;?>&z=28&t=k' target='_blank'>Ver</a>
                                 </td>
                                 <td>
                                     <?php echo $noty->descripcion ;?>

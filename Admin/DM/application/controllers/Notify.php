@@ -15,7 +15,7 @@ class Notify extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
-        $this->load->model('Users_model');
+        $this->load->model('Users_Model');
         $this->load->model('Notify_Model');
 
     }
@@ -23,7 +23,7 @@ class Notify extends CI_Controller
     {
         if ($_SESSION['logged_in'] == true) {
             $parameters_header = array(
-                'users' => $this->Users_model->countUsers(),
+                'users' => $this->Users_Model->countUsers(),
                 'notify' => $this->Notify_Model->countNotify(),
             );
             $data = array('notify' => $this->Notify_Model->getAll());

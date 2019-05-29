@@ -14,17 +14,17 @@ class Users extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
-        $this->load->model('Users_model');
+        $this->load->model('Users_Model');
         $this->load->model('Notify_Model');
     }
 
     public function index()
     {
         if ($_SESSION['logged_in'] == true) {
-            $usuarios = $this->Users_model->getAll();
+            $usuarios = $this->Users_Model->getAll();
 
             $parameters_header = array(
-                'users' => $this->Users_model->countUsers(),
+                'users' => $this->Users_Model->countUsers(),
                 'notify' => $this->Notify_Model->countNotify(),
             );
 
@@ -78,7 +78,7 @@ class Users extends CI_Controller
             'registro_fecha' => $fecha,
             'estado' => 1,
         );
-        $consul = $this->Users_model->saveUser($parametros);
+        $consul = $this->Users_Model->saveUser($parametros);
         if ($consul) {
             header('Location:' . getenv('HTTP_REFERER'));
         } else {
@@ -89,12 +89,12 @@ class Users extends CI_Controller
     public function getUser()
     {
         $user = $this->input->post('usuario');
-        $usuario = $this->Users_model->getUserById($user);
+        $usuario = $this->Users_Model->getUserById($user);
         echo json_encode($usuario);
     }
     public function delUser()
     {
         $user = $this->input->post('usuario');
-        $usuario = $this->Users_model->delUser($user);
+        $usuario = $this->Users_Model->delUser($user);
     }
 }
